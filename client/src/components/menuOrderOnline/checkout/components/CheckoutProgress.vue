@@ -43,14 +43,18 @@
                 </div>
             </li>
         </ul>
-        <button @click = "$emit('closeCheckoutModal')"
+        <button @click = "closeCheckoutModal"
             class="btn border-none p-3 pr-0 m-0 text-4xl">&#215;</button>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'CheckoutProgress'
-
+    name: 'CheckoutProgress',
+    methods: {
+        closeCheckoutModal() {
+            this.$store.commit('app/toggle', 'checkout');
+        }
+    }
 }
 </script>

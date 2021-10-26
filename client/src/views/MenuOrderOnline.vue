@@ -19,14 +19,12 @@
 
       <!-- Shopping Cart -->
       <article class="md:col-span-2">
-        <shopping-cart class="md:sticky md:top-0"
-          @goToCheckout="toggle=true"/>
+        <shopping-cart class="md:sticky md:top-0"/>
       </article>
 
-      <!-- Checkout -->
+      <!-- Checkout Modal-->
       <article>
-        <checkout v-show="toggle"
-          @closeCheckoutModal="toggle=false"/>
+        <checkout v-show="checkoutModalToggle"/>
       </article>
     </div>
   </div>
@@ -45,12 +43,10 @@ export default {
     'shopping-cart': ShoppingCart,
     'checkout': () => import(/* webpackChunkName: "Checkout" */'@/components/menuOrderOnline/Checkout.vue')
   },
-  data () {
-    return {
-      toggle: false,      
-    }
-  },
   computed: {
+    checkoutModalToggle() {
+      return this.$store.state.app.toggles.checkout;
+    },
     ...mapGetters('food', [
       'getPizza',
       'getDesert',
@@ -58,6 +54,6 @@ export default {
       'getMainDish',
       'getBeverage'
     ])
-  }
+  },
 }
 </script>

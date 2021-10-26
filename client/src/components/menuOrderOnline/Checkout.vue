@@ -1,7 +1,7 @@
 <template>
     <div class="fixed inset-0 w-screen h-screen bg-gray-700 bg-opacity-70 z-50 grid place-items-center px-4">
         <div class="container bg-white h-almost-screen overflow-y-auto">
-            <checkout-progress @closeCheckoutModal="$emit('closeCheckoutModal')"/>
+            <checkout-progress/>
             <component :is="activeComponent" @changeActiveComponent="activeComponent=$event"/>
         </div>
     </div>

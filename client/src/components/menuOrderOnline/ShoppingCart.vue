@@ -1,6 +1,6 @@
 <template>
     <div class="fixed bottom-0 inset-x-0 w-full bg-white z-40 md:static">
-        <div :class="{ hidden : !toggle }" class="md:block w-5/6 lg:w-2/3 py-4 mx-auto">
+        <div :class="{ hidden : !customerOrderToggle }" class="md:block w-5/6 lg:w-2/3 py-4 mx-auto">
             <customer-account/>
 
             <div class="mt-12 mb-8">
@@ -14,9 +14,7 @@
 
             <customer-order/>
         </div>
-        <go-to-checkout-button
-            @toggleCustomerOrder="toggle=!toggle"
-            @goToCheckout="$emit('goToCheckout')"/>
+        <go-to-checkout-button/>
     </div>
 </template>
 
@@ -30,9 +28,9 @@ export default {
         'customer-account': () => import(/* webpackChunkName: "CustomerAccount" */'@/components/menuOrderOnline/shoppingCart/CustomerAccount.vue'),
         'delivery-address': () => import(/* webpackChunkName: "DeliveryAddress" */'@/components/menuOrderOnline/shoppingCart/DeliveryAddress.vue')
     },
-    data() {
-        return {
-            toggle: false
+    computed: {
+        customerOrderToggle() {
+            return this.$store.state.app.toggles.customerOrder;
         }
     }
 }
