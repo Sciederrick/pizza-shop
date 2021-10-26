@@ -6,15 +6,15 @@
       <article class="md:col-span-3">
         <secondary-nav/>
         
-        <food :category="pizza.category" :data="pizza.data" /><!-- 🍕  pizza -->
+        <food category="pizza" :data="getPizza" /><!-- 🍕  pizza -->
         
-        <food :category="mainDish.category" :data="mainDish.data" /><!-- 🍗 main dish-->
+        <food category="main dish" :data="getMainDish" /><!-- 🍗 main dish-->
         
-        <food :category="beverage.category" :data="beverage.data" /><!-- 🥤 beverage-->
+        <food category="beverage" :data="getBeverage" /><!-- 🥤 beverage-->
         
-        <food :category="dessert.category" :data="dessert.data" /><!-- 🍰 dessert-->
+        <food category="dessert" :data="getDesert" /><!-- 🍰 dessert-->
         
-        <food :category="salad.category" :data="salad.data" /><!-- 🥗 salad-->
+        <food category="salad" :data="getSalad" /><!-- 🥗 salad-->
       </article>
 
       <!-- Shopping Cart -->
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import SecondaryNav from '@/components/layout/MenuOrderOnlineNav.vue'
 import Food from '@/components/menuOrderOnline/Food.vue'
 import ShoppingCart from '@/components/menuOrderOnline/ShoppingCart.vue'
@@ -42,57 +43,21 @@ export default {
     'secondary-nav':SecondaryNav,
     'food': Food,
     'shopping-cart': ShoppingCart,
-    'checkout': () => import(/* webpackChunkName: "Checkout"*/'@/components/menuOrderOnline/Checkout.vue')
+    'checkout': () => import(/* webpackChunkName: "Checkout" */'@/components/menuOrderOnline/Checkout.vue')
   },
   data () {
     return {
-      toggle: false,
-      pizza: {
-        category: 'pizza',
-        data: [
-          { id:'1', image: 'img1.jpg', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'2', image: 'img2.jpg', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'3', image: 'img3.jpg', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'4', image: 'img4.png', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 }
-        ]
-      },
-      mainDish: {
-        category: 'main dish',
-        data: [
-          { id:'1', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'2', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'3', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'4', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 }
-        ]
-      },
-      beverage: {
-        category: 'beverage',
-        data: [
-          { id:'1', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'2', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'3', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'4', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 }
-        ]
-      },
-      dessert: {
-        category: 'dessert',
-        data: [
-          { id:'1', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'2', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'3', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'4', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 }
-        ]
-      },
-      salad: {
-        category: 'salad',
-        data: [
-          { id:'1', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'2', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'3', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 },
-          { id:'4', image: '', name: 'some Food', ingredients: 'ingredient 1, ingredient 2, ingredient 3', price: 30 }
-        ]
-      }
+      toggle: false,      
     }
+  },
+  computed: {
+    ...mapGetters('food', [
+      'getPizza',
+      'getDesert',
+      'getSalad',
+      'getMainDish',
+      'getBeverage'
+    ])
   }
 }
 </script>
