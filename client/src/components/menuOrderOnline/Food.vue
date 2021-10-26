@@ -37,7 +37,7 @@
 <script>
 export default {
     components: {
-        'more-food-info-component': () => import(/* webpackChunkName: "moreFoodInfoComponent" */'@/components/modals/MoreFoodInfo.vue')
+        'more-food-info-component': () => import(/* webpackChunkName: "moreFoodInfoComponent" */'@/components/menuOrderOnline/food/MoreFoodInfo.vue')
     },
     props: {
         category: { type: String, required: true },

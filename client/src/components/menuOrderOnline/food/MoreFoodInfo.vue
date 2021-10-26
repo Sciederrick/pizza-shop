@@ -6,7 +6,7 @@
                 <fa-icon :icon="['fas', 'times']"/>
             </button>
             <figure class="w-full mx-auto overflow-hidden bg-red-100 text-center">
-                <img :src="require(`./../../assets/images/gallery/${foodItem.image}`)" class="img-more-shopping-info" :alt="`image of ${foodItem.name}`"/>
+                <img :src="require(`@/assets/images/gallery/${foodItem.image}`)" class="img-more-shopping-info" :alt="`image of ${foodItem.name}`"/>
             </figure>
             <div class="px-4 my-4">
                 <h2>{{foodItem.name}}</h2>
