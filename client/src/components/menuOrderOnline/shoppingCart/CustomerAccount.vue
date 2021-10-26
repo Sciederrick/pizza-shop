@@ -23,10 +23,10 @@ export default {
     },
     methods: {
         openSignUpModal() {
-            //  Include toggle property in vuex
+            this.$store.commit('app/toggle', 'signUp');
         },
         openSignInModal() {
-            //  Include toggle property in vuex
+            this.$store.commit('app/toggle', 'signIn');
         }
     }
 }

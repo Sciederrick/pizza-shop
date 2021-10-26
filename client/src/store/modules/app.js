@@ -4,9 +4,9 @@ export default {
         toggles: {
             signUp: false,
             signIn: false,
+            forgotPassword: false,
             checkout: false,
             customerOrder: false,
-            moreFoodInfo: false
         }
     },
     mutations: {

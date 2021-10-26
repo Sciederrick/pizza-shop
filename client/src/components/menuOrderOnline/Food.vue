@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         showMoreFoodInfo(id) {
-            this.moreFoodInfoToggleId = id;
+            if (id) this.moreFoodInfoToggleId = id;
         }
     }
 }

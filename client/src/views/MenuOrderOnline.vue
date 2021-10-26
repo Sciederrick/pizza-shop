@@ -26,6 +26,11 @@
       <article>
         <checkout v-show="checkoutModalToggle"/>
       </article>
+
+      <!-- Auth -->
+      <auth-signup/>
+      <auth-signin/>
+      <auth-forgotpassword/>
     </div>
   </div>
 </template>
@@ -41,6 +46,9 @@ export default {
     'secondary-nav':SecondaryNav,
     'food': Food,
     'shopping-cart': ShoppingCart,
+    'auth-signup': () => import(/* webpackChunkName: "SignUp" */'@/components/auth/SignUp.vue'),
+    'auth-signin': () => import(/* webpackChunkName: "SignIn" */'@/components/auth/SignIn.vue'),
+    'auth-forgotpassword': () => import(/* webpackChunkName: "ForgotPassword" */'@/components/auth/ForgotPassword.vue'),
     'checkout': () => import(/* webpackChunkName: "Checkout" */'@/components/menuOrderOnline/Checkout.vue')
   },
   computed: {

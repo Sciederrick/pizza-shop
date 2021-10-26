@@ -6,7 +6,7 @@
 				<opt-in-checkboxes/>
 		</div>
 		<div class="lg:col-start-6 lg:col-span-2">
-				<customer-order class="bg-white p-3 my-6"/>
+				<customer-order class="bg-white p-3 my-6 h-2/3 overflow-y-auto"/>
 				<button @click="$emit('changeActiveComponent', 'checkout-order-confirmation')"
 					class="btn btn-black w-full">Create Order</button>
 		</div>

@@ -9,7 +9,7 @@
             type="submit"
             class="btn btn-black lg:w-2/3 px-0 flex flex-row justify-between md:justify-center mx-auto py-0 text-lg">
             <div @click.self.prevent="goToCheckout"
-                class="col-span-4 py-2 pl-3">
+                class="col-span-4 py-2 pl-3 md:w-full">
                 GO TO CHECKOUT
                 <!-- Visible only on md to lg screens -->
                 <fa-icon class="hidden md:inline" :icon="['fas','angle-right']" size="1x"/>
@@ -19,8 +19,8 @@
             <!-- Visible only on sm screens -->
             <button @click.self.prevent="toggleCustomerOrder"
                 type="submit"
-                class="btn my-0 border-l border-gray-500 pt-2 w-12 md:hidden">
-                <fa-icon @click.self.prevent="$emit('toggleCustomerOrder')"
+                class="btn my-0 border-l border-gray-500 z-50 pt-2 w-12 md:hidden">
+                <fa-icon @click.self.prevent="toggleCustomerOrder"
                     class="md:hidden" :icon="['fas','angle-down']" size="2x"/>
             </button>
         </button>
