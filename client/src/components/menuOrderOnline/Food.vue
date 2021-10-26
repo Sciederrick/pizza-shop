@@ -14,7 +14,7 @@
                 v-if="item.image" 
                 @click="showMoreFoodInfo(item.id)"
                 class="w-32 h-32 mx-auto rounded-full overflow-hidden bg-red-100 py-5 cursor-pointer">
-                <img :src="require(`./../assets/images/gallery/${item.image}`)" class="img-default" :alt="`image of ${item.name}`"/>
+                <img :src="require(`@/assets/images/gallery/${item.image}`)" class="img-default" :alt="`image of ${item.name}`"/>
             </figure>
             <!-- Image missing -->
             <figure v-else 

@@ -14,21 +14,21 @@
 
             <customer-order/>
         </div>
-        <go-to-checkout-button-component 
+        <go-to-checkout-button
             @toggleCustomerOrder="toggle=!toggle"
             @goToCheckout="$emit('goToCheckout')"/>
     </div>
 </template>
 
 <script>
-import GoToCheckoutButtonComponent from '@/components/baseComponents/GoToCheckoutButtonComponent.vue'
+import GoToCheckoutButton from '@/components/menuOrderOnline/checkout/components/GoToCheckoutButton.vue'
 export default {
     name: 'ShoppingCart',
     components: {
-        'go-to-checkout-button-component': GoToCheckoutButtonComponent,
-        'customer-order': () => import(/* webpackChunkName: "CustomerOrder" */'@/components/CustomerOrder.vue'),
-        'customer-account': () => import(/* webpackChunkName: "CustomerAccount" */'@/components/CustomerAccount.vue'),
-        'delivery-address': () => import(/* webpackChunkName: "DeliveryAddress" */'@/components/DeliveryAddress.vue')
+        'go-to-checkout-button': GoToCheckoutButton,
+        'customer-order': () => import(/* webpackChunkName: "CustomerOrder" */'@/components/menuOrderOnline/shoppingCart/CustomerOrder.vue'),
+        'customer-account': () => import(/* webpackChunkName: "CustomerAccount" */'@/components/menuOrderOnline/shoppingCart/CustomerAccount.vue'),
+        'delivery-address': () => import(/* webpackChunkName: "DeliveryAddress" */'@/components/menuOrderOnline/shoppingCart/DeliveryAddress.vue')
     },
     data() {
         return {

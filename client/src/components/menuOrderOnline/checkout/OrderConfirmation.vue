@@ -46,7 +46,7 @@
 export default {
     name: 'OrderConfirmation',
     components: {
-        'checkout-customer-order': () => import(/* webpackChunkName : "CustomerOrder" */'@/components/checkout/components/CustomerOrder.vue')
+        'checkout-customer-order': () => import(/* webpackChunkName : "CustomerOrder" */'@/components/menuOrderOnline/checkout/components/CustomerOrder.vue')
     },
     data() {
         return {

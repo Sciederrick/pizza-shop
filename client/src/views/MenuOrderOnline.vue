@@ -34,15 +34,15 @@
 
 <script>
 import SecondaryNav from '@/components/layout/MenuOrderOnlineNav.vue'
-import Food from '@/components/Food.vue'
-import ShoppingCart from '@/components/ShoppingCart.vue'
+import Food from '@/components/menuOrderOnline/Food.vue'
+import ShoppingCart from '@/components/menuOrderOnline/ShoppingCart.vue'
 export default {
   name: 'MenuOrderOnline',
   components: {
     'secondary-nav':SecondaryNav,
     'food': Food,
     'shopping-cart': ShoppingCart,
-    'checkout': () => import(/* webpackChunkName: "Checkout"*/'@/components/Checkout.vue')
+    'checkout': () => import(/* webpackChunkName: "Checkout"*/'@/components/menuOrderOnline/Checkout.vue')
   },
   data () {
     return {

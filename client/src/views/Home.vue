@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Contact from '@/components/Contact.vue'
+import Contact from '@/components/home/Contact.vue'
 export default {
   name: 'Home',
   components: {

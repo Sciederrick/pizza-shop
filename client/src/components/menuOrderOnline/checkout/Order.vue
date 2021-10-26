@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import PaymentOrderTypePickupTime from '@/components/checkout/components/PaymentOrderTypePickupTime.vue';
-import ContactForm from '@/components/checkout/components/Contact.vue'
-import OptInCheckboxes from '@/components/checkout/components/OptInCheckboxes.vue'
-import CustomerOrder from '@/components/CustomerOrder.vue'
+import PaymentOrderTypePickupTime from '@/components/menuOrderOnline/checkout/components/PaymentOrderTypePickupTime.vue';
+import ContactForm from '@/components/menuOrderOnline/checkout/components/Contact.vue'
+import OptInCheckboxes from '@/components/menuOrderOnline/checkout/components/OptInCheckboxes.vue'
+import CustomerOrder from '@/components/menuOrderOnline/checkout/components/CustomerOrder.vue'
 export default {
 	name: 'Order',
 	components: {

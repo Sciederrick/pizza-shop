@@ -13,7 +13,13 @@
                 <p class="italic text-sm">{{foodItem.ingredients}}</p>
             </div>
             <div class="sticky bottom-0 inset-x-0 px-4 md:py-2 grid grid-cols-2 md:flex md:justify-between bg-white shadow-xl">
-                <quantity-component/>
+                <div class="w-24 my-2 grid grid-cols-3 border-t border-b border-r-0 border-l-0 border-gray-400">
+                    <button @click.prevent="decrementQuantity"
+                        class="btn-cart-quantity btn-white" type="submit" name="buttonIncrement">&minus;</button>
+                    <span class="text-center py-1 px-2">{{quantity}}</span>
+                    <button @click.prevent="incrementQuantity"
+                        class="btn-cart-quantity btn-white" type="submit" name="buttonDecrement">&plus;</button>
+                </div>
                 <span class="py-2 text-center text-red-500">${{foodItem.price.toFixed(2)}}</span>
                 <button class="col-span-2 btn btn-black w-full md:w-auto rounded-none">ADD TO CART</button>
             </div>
@@ -22,15 +28,24 @@
 </template>
 
 <script>
-import ShoppingCartQuantityComponent from '@/components/baseComponents/ShoppingCartQuantityComponent.vue';
 export default {
-    components: {
-        'quantity-component': ShoppingCartQuantityComponent
-    },
     props: {
         foodItem: {
             type: Object,
             required: true
+        }
+    },
+    data() {
+        return {
+            quantity: 0
+        }
+    },
+    methods: {
+        incrementQuantity() {
+            if(this.quantity < 15) this.quantity++;
+        },
+        decrementQuantity() {
+            if(this.quantity > 0) this.quantity--;
         }
     }
 }
