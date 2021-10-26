@@ -5,7 +5,7 @@
         <div v-if="true">
             <div v-for="i in 12" :key="i"
                 class="flex flex-row justify-between border-b border-gray-200">
-                <div class="">1&nbsp;&times;&nbsp;Capriciosa</div>
+                <div>1&nbsp;&times;&nbsp;Capriciosa</div>
                 <div class="grid grid-auto-row">
                     <div> $22.00 </div>
                     <div class="grid grid-cols-2">
