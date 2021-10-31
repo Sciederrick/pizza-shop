@@ -2,7 +2,7 @@
     <div>
         <!-- Visible only on md to lg screens -->
         <p class="hidden md:flex md:w-2/3 md:mx-auto md:justify-between">
-            <span>TOTAL</span><span>$0.00</span>
+            <span>TOTAL</span><span>$&nbsp;{{totalCost.toFixed(2)}}</span>
         </p>
         <button 
             @click.self.prevent="$emit('goToCheckout')"
@@ -15,7 +15,7 @@
                 <fa-icon class="hidden md:inline" :icon="['fas','angle-right']" size="1x"/>
             </div>
             <div @click.self.prevent="goToCheckout"
-                class="text-center py-2 md:hidden">$22.00</div>
+                class="text-center py-2 md:hidden">$&nbsp;{{totalCost.toFixed(2)}}</div>
             <!-- Visible only on sm screens -->
             <button @click.self.prevent="toggleCustomerOrder"
                 type="submit"
@@ -27,8 +27,12 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: 'GoToCheckoutButton',
+    computed: mapGetters('cart', {
+        'totalCost': 'getTotalCost'
+    }),
     methods: {
         goToCheckout() {
             this.$store.commit('app/toggle','checkout');
@@ -39,4 +43,6 @@ export default {
     }
 }
 </script>
+
+
 

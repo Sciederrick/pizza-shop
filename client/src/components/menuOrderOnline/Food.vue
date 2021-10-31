@@ -27,7 +27,13 @@
                     <p class="italic text-sm w-2/3 mx-auto">{{item.ingredients}}</p>
                     <p class="text-red-500">{{item.prize}}</p>
                 </div>
-                <button class="btn btn-black">ORDER NOW</button>
+                <button @click.prevent = "addToCart(item.id)"
+                    type="submit" class="relative btn btn-black">
+                    ORDER NOW
+                    <div class="absolute -right-1 -top-1 w-5 h-5 flex justify-center items-center rounded-full bg-yellow-600 text-white p-3 text-sm font-mono bg-opacity-75 text-opacity-100">
+                    1
+                    </div>
+                </button>
             </div>
             <more-food-info-component @closeMoreFoodInfoModal="moreFoodInfoToggleId=null" :foodItem="item" v-if="item.id === moreFoodInfoToggleId"/>
         </section>
@@ -48,9 +54,41 @@ export default {
             moreFoodInfoToggleId: null
         }
     },
+    computed: {
+        cartItems() {
+            return this.$store.state.cart.cart;
+        }
+    },
     methods: {
         showMoreFoodInfo(id) {
             if (id) this.moreFoodInfoToggleId = id;
+        },
+        isInTheCart(cart, productId) {
+            let isInTheCart = false;
+            cart.forEach((cartItem, index) => {
+                console.log(cartItem.productId, productId)
+                if (cartItem.productId === productId) {
+                    this.$store.commit('cart/setRecentSearchIndex', index);
+                    isInTheCart = true;
+                }
+            });
+            return isInTheCart;
+        },
+        addToCart(productId) {
+            let isInTheCart = false;
+            isInTheCart = this.isInTheCart(this.cartItems, productId);
+            if (isInTheCart) {
+                this.$store.commit('cart/modifyCart');
+                console.log({isInTheCart})
+            } else {
+                console.log({isInTheCart})
+                this.$store.commit('cart/addToCart', { productId:productId, quantity:1 });
+            } 
+                
+
+            //  @TODO: Sync cart with localstorage
+            // this.$store.dispatch("cart/addToCart", item)
+            //  Send cart to the server after the customer creates an order
         }
     }
 }

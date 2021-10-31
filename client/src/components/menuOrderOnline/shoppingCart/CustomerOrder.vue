@@ -3,14 +3,14 @@
         <h2 class="font-semibold">Your order</h2>
         <hr/>
         <div v-if="true">
-            <div v-for="i in 12" :key="i"
+            <div v-for="item in cart" :key="item.productId"
                 class="flex flex-row justify-between border-b border-gray-200">
-                <div>1&nbsp;&times;&nbsp;Capriciosa</div>
+                <div>{{item.quantity}}&nbsp;&times;&nbsp;{{item.name}}</div>
                 <div class="grid grid-auto-row">
-                    <div> $22.00 </div>
+                    <div> $&nbsp;{{item.price.toFixed(2)}} </div>
                     <div class="grid grid-cols-2">
-                        <button class="btn btn-white border border-r-0 p-1 mt-0">&minus;</button>
-                        <button class="btn btn-white border p-1 mt-0">&plus;</button>
+                        <button class="btn btn-white border border-r-0 py-1 px-2 mt-0">&minus;</button>
+                        <button class="btn btn-white border py-1 px-2 mt-0">&plus;</button>
                     </div>
                 </div>
             </div>
@@ -25,3 +25,12 @@
         </div>
     </div>
 </template>
+<script>
+import { mapGetters } from 'vuex';
+export default {
+    name: 'ShoppingCartCustomerOrder',
+    computed: mapGetters('cart', {
+        'cart': 'getCartItems'
+    })
+}
+</script>

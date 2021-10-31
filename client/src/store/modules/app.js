@@ -7,6 +7,8 @@ export default {
             forgotPassword: false,
             checkout: false,
             customerOrder: false,
+            account: false,
+            language: false
         }
     },
     mutations: {

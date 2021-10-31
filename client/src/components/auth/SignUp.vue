@@ -1,5 +1,5 @@
 <template>
-    <div v-show = "signUpToggle"
+    <div v-if = "signUpToggle"
         class="z-50 fixed inset-0 grid place-items-center" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="w-5/6 md:w-2/3 mx-auto bg-white overflow-auto">
             <button @click="closeSignUpModal"

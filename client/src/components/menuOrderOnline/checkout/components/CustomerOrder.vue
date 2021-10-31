@@ -1,22 +1,27 @@
 <template>
     <div>
         <h2 class="font-semibold">Your order</h2>
-        <div v-for="i in 10" :key="i"
+        <div v-for="item in cart" :key="item.productId"
             class="flex flex-row justify-between border-b border-gray-200 my-3">
-            <div class="">1&nbsp;&times;&nbsp;<span class="pl-8">Capriciosa</span></div>
-            <div> $22.00 </div>
+            <div>{{item.quantity}}&nbsp;&times;&nbsp;<span class="pl-8">{{item.name}}</span></div>
+            <div>$&nbsp;{{item.price.toFixed(2)}}</div>
         </div>
         <hr/>
         <div class="flex justify-between py-3">
             <span class="text-left">Menu items cost</span>
-            <span class="text-right">$77.99</span>
+            <span class="text-right">{{totalCost.toFixed(2)}}</span>
         </div>
         <hr/>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-    name: 'checkout-customer-order'
+    name: 'CheckoutCustomerOrder',
+    computed: mapGetters('cart', {
+        'cart': 'getCartItems',
+        'totalCost': 'getTotalCost'
+    })
 }
 </script>
