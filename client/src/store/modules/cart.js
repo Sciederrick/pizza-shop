@@ -3,16 +3,25 @@ import food from "./food";
 export default {
     namespaced: true,
     state: {
-        cart: [
-            { productId: '1', quantity: 2 },
-            { productId: '2', quantity: 3 },
-            { productId: '5', quantity: 1 },
-            { productId: '14', quantity: 3 },
-            { productId: '11', quantity: 4 },
-        ],
+        cart: [],
         recentSearchIndex: null
     },
     getters: {
+        getCartItemQuantityById: (state, getters) => id => {
+            let foundAt = null;
+            foundAt = getters.getCartItemIndexById(id);
+            if (foundAt !== null) return state.cart[foundAt].quantity;
+            return null;
+        },
+        getCartItemIndexById: state => id => {
+            let foundAt = null;
+            state.cart.forEach((cartItem, index) => {
+                if(cartItem.productId === id) {
+                    foundAt = index;
+                }
+            });
+            return foundAt;
+        },
         getCartItems: state => {
             let foodObj = null;
             let cartItems = [];
@@ -20,6 +29,7 @@ export default {
                 food.state.food.forEach(foodItem => {
                     if(foodItem.id === cartItem.productId) {
                         foodObj = {
+                            id: cartItem.productId,
                             name: foodItem.name,
                             price: foodItem.price,
                             quantity: cartItem.quantity
@@ -42,7 +52,6 @@ export default {
     mutations: {
         addToCart(state, cartItem) {
             state.cart.push(cartItem);
-            console.log({cartItem}, "addToCart")
         },
         setCart(state, shoppingCart) {
             state.cart = shoppingCart;
@@ -50,8 +59,15 @@ export default {
         emptyCart(state) {
             state.cart = [];
         },
-        modifyCart(state) {
-            state.cart[state.recentSearchIndex].quantity++; 
+        modifyCart(state, option=false) {
+            if(option){
+                state.cart[state.recentSearchIndex].quantity++; 
+            } else {
+                state.cart[state.recentSearchIndex].quantity--; 
+            }
+        },
+        removeFromCart(state) {
+            state.cart.splice(state.recentSearchIndex, 1);
         },
         setRecentSearchIndex(state, id) {
             state.recentSearchIndex = id;

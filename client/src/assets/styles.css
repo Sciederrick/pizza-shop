@@ -25,11 +25,11 @@
     @apply p-2 w-full rounded-sm;
 }
 
-.contact-form-input-wrapper, .table-booking-form-input-wrapper {
+.contact-form-input-wrapper, .table-booking-form-input-wrapper, .checkout-form-input-wrapper {
     @apply relative my-3 border rounded-sm border-gray-500;
 }
 
-.contact-form-label, .table-booking-form-label {
+.contact-form-label, .table-booking-form-label, .checkout-form-label {
     @apply absolute -top-2 left-4 text-xs lg:text-sm text-gray-500 px-1 bg-white;
 }
 
@@ -37,8 +37,13 @@
     @apply py-2 px-3 my-2 rounded-sm text-sm md:text-base;
 }
 
+
 .custom-select {
     @apply border-none text-sm cursor-pointer w-full;
+}
+
+.custom-select-checkout {
+    @apply w-full py-1 px-2 mt-1 border rounded-sm border-gray-400;
 }
 
 .custom-select-option {
@@ -80,4 +85,17 @@
 .h-almost-screen {
     max-height: 96vh;
 }
+
+.payment-selected {
+    @apply border-yellow-400 shadow-inner bg-yellow-600 text-white;
+}
+
+.order-type-selected {
+    @apply border-yellow-400 shadow-inner bg-yellow-300;
+}
+
+.pickup-time-selected {
+    @apply border-green-400 shadow-inner bg-green-700 text-white;
+}
+
 @tailwind utilities;

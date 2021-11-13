@@ -18,7 +18,7 @@
       <div class="lg:w-5/6 lg:mx-auto lg:grid lg:grid-flow-col lg:mt-4">
         <section>
         <!-- Contact Form -->
-            <form class="custom-page-placement">
+            <form name="contactUs" class="custom-page-placement">
                 <div class="contact-form-input-wrapper">
                     <label class="contact-form-label"
                         for="fullname">Full Name *</label>

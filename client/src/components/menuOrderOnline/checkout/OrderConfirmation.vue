@@ -51,13 +51,13 @@ export default {
     data() {
         return {
             orderInfo: {
-                orderType:'pickup',
-                pickupAddress:'Nairobi, Biashara st.',
-                payment:'Card',
-                customer:'derrickmbarani@gmail.com'
+                orderType: this.$store.state.order.order.orderType,
+                pickupAddress: 'Nairobi, Biashara st.',
+                payment: this.$store.state.order.order.paymentType,
+                customer: `${this.$store.state.order.order.firstName} ${this.$store.state.order.order.lastName}`
             }
         }
-    }
+    },
 }
 </script>
 

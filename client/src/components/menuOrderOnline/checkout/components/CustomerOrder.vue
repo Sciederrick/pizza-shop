@@ -9,7 +9,7 @@
         <hr/>
         <div class="flex justify-between py-3">
             <span class="text-left">Menu items cost</span>
-            <span class="text-right">{{totalCost.toFixed(2)}}</span>
+            <span class="text-right">$&nbsp;{{totalCost.toFixed(2)}}</span>
         </div>
         <hr/>
     </div>

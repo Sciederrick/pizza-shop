@@ -7,7 +7,7 @@
       </header>
       <section>
         <!-- Table Booking Form -->
-        <form>
+        <form name="tableBooking">
             <div class="table-booking-form-input-wrapper">
                 <label class="table-booking-form-label"
                     for="restaurant">Restaurant</label>

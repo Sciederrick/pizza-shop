@@ -14,14 +14,17 @@
             </div>
             <div class="sticky bottom-0 inset-x-0 px-4 md:py-2 grid grid-cols-2 md:flex md:justify-between bg-white shadow-xl">
                 <div class="w-24 my-2 grid grid-cols-3 border-t border-b border-r-0 border-l-0 border-gray-400">
-                    <button @click.prevent="decrementQuantity"
-                        class="btn-cart-quantity btn-white" type="submit" name="buttonIncrement">&minus;</button>
-                    <span class="text-center py-1 px-2">{{quantity}}</span>
-                    <button @click.prevent="incrementQuantity"
-                        class="btn-cart-quantity btn-white" type="submit" name="buttonDecrement">&plus;</button>
+                    <button @click.prevent="decrementQuantity(foodItem.id)"
+                        class="btn-cart-quantity btn-white" type="submit" name="buttonDecrement">&minus;</button>
+                    <span class="text-center py-1 px-2">{{prodQuantity||0}}</span>
+                    <button @click.prevent="incrementQuantity(foodItem.id)"
+                        class="btn-cart-quantity btn-white" type="submit" name="buttonIncrement">&plus;</button>
                 </div>
                 <span class="py-2 text-center text-red-500">${{foodItem.price.toFixed(2)}}</span>
-                <button class="col-span-2 btn btn-black w-full md:w-auto rounded-none">ADD TO CART</button>
+                <button v-show = "!isInTheCart"
+                    @click.prevent="addToCart(foodItem.id)"
+                    type="submit"
+                    class="col-span-2 btn btn-black w-full md:w-auto rounded-none">ADD TO CART</button>
             </div>
         </div>
     </div>
@@ -33,20 +36,60 @@ export default {
         foodItem: {
             type: Object,
             required: true
+        },
+        quantity: {
+            type: Number,
+            default: 0
+        },
+        isItemInTheCart: {
+            type: Boolean,
+            required: true
         }
     },
     data() {
         return {
-            quantity: 0
+            prodQuantity: this.quantity,
+            isInTheCart: this.isItemInTheCart
         }
     },
     methods: {
-        incrementQuantity() {
-            if(this.quantity < 15) this.quantity++;
+        incrementQuantity(id) {
+            if(this.prodQuantity < 15) {
+                ++this.prodQuantity;
+                if(this.isInTheCart) {
+                    let index = this.$store.getters['cart/getCartItemIndexById'](id) ?? -1;
+                    if(index > -1) {
+                        this.$store.commit('cart/setRecentSearchIndex', index);
+                        this.$store.commit('cart/modifyCart', true);
+                    }
+                }
+            }
         },
-        decrementQuantity() {
-            if(this.quantity > 0) this.quantity--;
+        decrementQuantity(id) {
+            if(this.prodQuantity > 0) {
+                --this.prodQuantity;
+                if(this.isInTheCart) {
+                    let index = this.$store.getters['cart/getCartItemIndexById'](id) ?? -1;
+                    if(index > -1) {
+                        this.$store.commit('cart/setRecentSearchIndex', index);
+                        this.$store.commit('cart/modifyCart', false);
+                    }
+                }
+            }
+            if(this.isInTheCart && this.prodQuantity === 0) {
+                this.isInTheCart = false;
+                this.$store.commit('cart/removeFromCart');
+            }
+        },
+        addToCart(productId) {
+            if(this.prodQuantity > 0) {
+                this.$store.commit('cart/addToCart', { productId:productId, quantity:this.prodQuantity });
+                this.isInTheCart = true;
+            }
+            //  @TODO: Sync cart with localstorage
+            // this.$store.dispatch("cart/addToCart", item)
+            //  Send cart to the server after the customer creates an order
         }
-    }
+    },
 }
 </script>

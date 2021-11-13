@@ -5,6 +5,7 @@ Vue.use(Vuex);
 import foodModule from './modules/food';
 import cartModule from './modules/cart';
 import galleryModule from './modules/gallery';
+import orderModule from './modules/order';
 import appModule from './modules/app';
 
 export default new Vuex.Store({
@@ -13,6 +14,7 @@ export default new Vuex.Store({
         food: foodModule,
         cart: cartModule,
         gallery: galleryModule,
+        order: orderModule,
         app: appModule
     }
 });

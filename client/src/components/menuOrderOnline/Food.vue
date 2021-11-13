@@ -30,12 +30,19 @@
                 <button @click.prevent = "addToCart(item.id)"
                     type="submit" class="relative btn btn-black">
                     ORDER NOW
-                    <div class="absolute -right-1 -top-1 w-5 h-5 flex justify-center items-center rounded-full bg-yellow-600 text-white p-3 text-sm font-mono bg-opacity-75 text-opacity-100">
-                    1
+                    <div v-show = "isInTheCart(cartItems, item.id)"
+                        class="absolute -right-1 -top-1 w-5 h-5 flex justify-center items-center rounded-full bg-yellow-600 text-white p-3 text-sm font-mono bg-opacity-75 text-opacity-100">
+                        {{ $store.getters['cart/getCartItemQuantityById'](item.id) }}
                     </div>
                 </button>
             </div>
-            <more-food-info-component @closeMoreFoodInfoModal="moreFoodInfoToggleId=null" :foodItem="item" v-if="item.id === moreFoodInfoToggleId"/>
+            <more-food-info-component 
+                v-if="item.id === moreFoodInfoToggleId"
+                @closeMoreFoodInfoModal = "moreFoodInfoToggleId=null" 
+                :foodItem = "item" 
+                :quantity = "$store.getters['cart/getCartItemQuantityById'](item.id)"
+                :isItemInTheCart="isInTheCart(cartItems, item.id)"
+                />
         </section>
     </section>
 </template>
@@ -66,7 +73,6 @@ export default {
         isInTheCart(cart, productId) {
             let isInTheCart = false;
             cart.forEach((cartItem, index) => {
-                console.log(cartItem.productId, productId)
                 if (cartItem.productId === productId) {
                     this.$store.commit('cart/setRecentSearchIndex', index);
                     isInTheCart = true;
@@ -78,10 +84,8 @@ export default {
             let isInTheCart = false;
             isInTheCart = this.isInTheCart(this.cartItems, productId);
             if (isInTheCart) {
-                this.$store.commit('cart/modifyCart');
-                console.log({isInTheCart})
+                this.$store.commit('cart/modifyCart', true);
             } else {
-                console.log({isInTheCart})
                 this.$store.commit('cart/addToCart', { productId:productId, quantity:1 });
             } 
                 
