@@ -1,24 +1,10 @@
-# client
+# Pizza Shop
 
-## Project setup
-```
-npm install
-```
+![website screenshot](./../screenshot-1.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![website screenshot](./../screenshot-2.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+![website screenshot](./../screenshot-3.png)
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
