@@ -6,15 +6,17 @@
       <article class="md:col-span-3">
         <secondary-nav/>
         
-        <food category="pizza" :data="getPizza" /><!-- 🍕  pizza -->
-        
-        <food category="main dish" :data="getMainDish" /><!-- 🍗 main dish-->
-        
-        <food category="beverage" :data="getBeverage" /><!-- 🥤 beverage-->
-        
-        <food category="dessert" :data="getDesert" /><!-- 🍰 dessert-->
-        
-        <food category="salad" :data="getSalad" /><!-- 🥗 salad-->
+        <section class="divide-y">
+          <food :data="getPizza" /><!-- 🍕  pizza -->
+          
+          <food :data="getMainDish" /><!-- 🍗 main dish-->
+          
+          <food :data="getBeverage" /><!-- 🥤 beverage-->
+          
+          <food :data="getDesert" /><!-- 🍰 dessert-->
+          
+          <food :data="getSalad" /><!-- 🥗 salad-->
+        </section>
       </article>
 
       <!-- Shopping Cart -->
