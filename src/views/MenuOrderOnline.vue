@@ -6,16 +6,16 @@
       <article class="md:col-span-3">
         <secondary-nav/>
         
-        <section class="divide-y">
-          <food :data="getPizza" /><!-- 🍕  pizza -->
+        <section class="divide-y" id="you">
+          <food :data="getPizza" id="Pizza"/><!-- 🍕  pizza -->
           
-          <food :data="getMainDish" /><!-- 🍗 main dish-->
+          <food :data="getMainDish" id="MainDishes"/><!-- 🍗 main dish-->
           
-          <food :data="getBeverage" /><!-- 🥤 beverage-->
+          <food :data="getBeverage" id="Salads"/><!-- 🥤 beverage-->
           
-          <food :data="getDesert" /><!-- 🍰 dessert-->
+          <food :data="getDesert" id="Desserts"/><!-- 🍰 dessert-->
           
-          <food :data="getSalad" /><!-- 🥗 salad-->
+          <food :data="getSalad" id="Beverages"/><!-- 🥗 salad-->
         </section>
       </article>
 
