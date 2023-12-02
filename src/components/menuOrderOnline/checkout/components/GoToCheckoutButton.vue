@@ -4,7 +4,7 @@
         <p class="hidden md:flex md:w-2/3 md:mx-auto md:justify-between">
             <span>TOTAL</span><span>$&nbsp;{{ totalCost.toFixed(2) }}</span>
         </p>
-        <button type="submit" :class="[isCartEmpty ? 'btn-faded' : 'btn-black']"
+        <button type="submit" :class="[isCartEmpty ? 'btn-faded cursor-not-allowed' : 'btn-black']"
             class="btn lg:w-2/3 px-0 flex flex-row justify-between md:justify-center mx-auto py-0 text-lg">
             <div @click.self.prevent="goToCheckout" class="col-span-4 py-2 pl-3 md:w-full">
                 GO TO CHECKOUT
