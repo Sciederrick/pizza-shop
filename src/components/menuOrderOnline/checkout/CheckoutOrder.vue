@@ -76,18 +76,19 @@ export default {
 			this.checkForInvalidInputValues(form);
 		},
 		submitForm() {
-			console.log(this.$store.state.order.formHandling);
-			this.validateFormValues(this.$store.state.order.order);
-			if(Object.values(this.fieldsWithMissingValues).length === 0 && Object.values(this.fieldsWithInvalidValues).length === 0) {
-				this.$emit('changeActiveComponent', 'checkout-order-confirmation');
-			} else {
-				if(Object.values(this.fieldsWithMissingValues).length !== 0) {
-					this.$store.commit('order/setFieldsWithMissingValues', this.fieldsWithMissingValues);
-				}
-				if(Object.values(this.fieldsWithInvalidValues).length !== 0) {
-					this.$store.commit('order/setFieldsWithInvalidValues', this.fieldsWithInvalidValues);
-				}
-			}
+			this.$emit('changeActiveComponent', 'checkout-order-confirmation');
+			// console.log(this.$store.state.order.formHandling);
+			// this.validateFormValues(this.$store.state.order.order);
+			// if(Object.values(this.fieldsWithMissingValues).length === 0 && Object.values(this.fieldsWithInvalidValues).length === 0) {
+			// 	this.$emit('changeActiveComponent', 'checkout-order-confirmation');
+			// } else {
+			// 	if(Object.values(this.fieldsWithMissingValues).length !== 0) {
+			// 		this.$store.commit('order/setFieldsWithMissingValues', this.fieldsWithMissingValues);
+			// 	}
+			// 	if(Object.values(this.fieldsWithInvalidValues).length !== 0) {
+			// 		this.$store.commit('order/setFieldsWithInvalidValues', this.fieldsWithInvalidValues);
+			// 	}
+			// }
 		}
 	}
 }

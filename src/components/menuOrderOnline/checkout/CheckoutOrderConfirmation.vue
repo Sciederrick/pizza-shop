@@ -35,7 +35,7 @@
         <div class="flex flex-col md:flex-row md:justify-between -mx-3 -mb-3 px-6 py-3 text-sm bg-indigo-400 text-white">
             <div class="order-2 md:order-1 py-2 text-left">
                 <fa-icon :icon="['far','question-circle']"/>
-                In case of any inquiries contact the restaurant: +254 743 709 788
+                In case of any inquiries contact the restaurant: +254 712 345 678
             </div>
             <div class="order-1 md:order-2 py-2 md:text-right">ORDER ID 2021-07-10 20:15</div>
         </div>
@@ -58,6 +58,11 @@ export default {
             }
         }
     },
+    mounted() {
+        setTimeout(() => {
+            this.$emit('changeActiveComponent', 'checkout-order-ready');
+        }, 5000)
+    }
 }
 </script>
 
