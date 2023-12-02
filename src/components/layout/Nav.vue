@@ -1,6 +1,6 @@
 <template>
 <nav class="z-20 lg:static" :class="[toggle?'fixed inset-x-0 top-0':'static']">
-	<div class="relative w-full mx-auto grid place-items-center shadow-xl md:shadow-none bg-white lg:grid-cols-1">
+	<div class="relative w-full mx-auto grid place-items-center bg-white lg:grid-cols-1">
 
 		<button @click="toggle=!toggle"
 			class="lg:hidden text-4xl p-4 bg-transparent"><!--Hamburger Button -->

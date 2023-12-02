@@ -24,7 +24,7 @@ export default {
   name: 'Gallery',
   data() {
     return {
-      collection: ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.png'],
+      collection: ['pizza1.webp', 'mainDish2.webp', 'mainDish3.webp', 'beverage4.webp', 'mainDish1.webp', 'salad4.webp'],
       isFocusImage: false,
       focusedImageId: null
     }
