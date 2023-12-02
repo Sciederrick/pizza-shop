@@ -9,14 +9,14 @@
 
 <script>
 import CheckoutProgress from '@/components/menuOrderOnline/checkout/components/CheckoutProgress.vue';
-import CheckoutOrder from '@/components/menuOrderOnline/checkout/Order.vue'
+import CheckoutOrder from '@/components/menuOrderOnline/checkout/CheckoutOrder.vue'
 export default {
     name: 'Checkout',
     components: {
         'checkout-progress' : CheckoutProgress,
         'checkout-order' : CheckoutOrder,
-        'checkout-order-confirmation' : () => import(/* webpackChunkName: "CheckoutOrderConfirmation" */'@/components/menuOrderOnline/checkout/OrderConfirmation.vue'),
-        'checkout-order-ready' : () => import(/* webpackChunkName: "CheckoutOrderReady" */'@/components/menuOrderOnline/checkout/OrderReady.vue')
+        'checkout-order-confirmation' : () => import(/* webpackChunkName: "CheckoutOrderConfirmation" */'@/components/menuOrderOnline/checkout/CheckoutOrderConfirmation.vue'),
+        'checkout-order-ready' : () => import(/* webpackChunkName: "CheckoutOrderReady" */'@/components/menuOrderOnline/checkout/CheckoutOrderReady.vue')
     },
     data() {
         return {
