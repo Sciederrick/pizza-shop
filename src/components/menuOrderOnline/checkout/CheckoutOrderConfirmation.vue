@@ -25,9 +25,13 @@
                         <td class="text-sm lg:text-base pr-3 lg:py-3">Payment</td>
                         <td class="pl-3 mb-1 lg:py-3 border-l border-gray-300">{{orderInfo.payment}}</td>
                     </tr>
-                    <tr>
+                    <tr class="border-b border-gray-300"">
                         <td class="text-sm lg:text-base pr-3 lg:py-3">Customer</td>
                         <td class="pl-3 mb-1 lg:py-3 border-l border-gray-300">{{orderInfo.customer}}</td>
+                    </tr> 
+                     <tr>
+                        <td class="text-sm lg:text-base pr-3 lg:py-3">Prep time</td>
+                        <td class="pl-3 mb-1 lg:py-3 border-l border-gray-300">{{orderInfo.waitTime}}</td>
                     </tr>
                 </table>
             </div>
@@ -54,14 +58,15 @@ export default {
                 orderType: this.$store.state.order.order.orderType,
                 pickupAddress: 'Nairobi, Biashara st.',
                 payment: this.$store.state.order.order.paymentType,
-                customer: `${this.$store.state.order.order.firstName} ${this.$store.state.order.order.lastName}`
+                customer: `${this.$store.state.order.order.firstName} ${this.$store.state.order.order.lastName}`,
+                waitTime: "4 min"
             }
         }
     },
     mounted() {
         setTimeout(() => {
             this.$emit('changeActiveComponent', 'checkout-order-ready');
-        }, 5000)
+        }, 240000)
     }
 }
 </script>
