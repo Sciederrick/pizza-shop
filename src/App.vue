@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="text-lg">
+  <div id="app" class="2xl:container 2xl:mx-auto text-lg">
     <app-nav/>
     <main>
       <router-view/>

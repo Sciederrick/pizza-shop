@@ -2,7 +2,7 @@
 @tailwind components;
 
 .hero-section {
-    @apply h-96 lg:h-screen;
+    @apply h-96;
 }
 
 .img-default {

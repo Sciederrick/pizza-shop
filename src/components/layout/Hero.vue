@@ -6,7 +6,7 @@
         <figure class="hidden lg:block">
             <img alt="Delicious Pizza Image" :src="require('@/assets/images/hero-image.jpg')" class="img-default"/>
         </figure>
-        <div class="absolute bottom-32 lg:bottom-48 w-full grid place-items-center z-10">
+        <div class="absolute bottom-32 lg:bottom-24 w-full grid place-items-center z-10">
             <slot>
                 <!-- Menu / Order Online Home page Button goes here -->
             </slot>
